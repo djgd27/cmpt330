@@ -1,0 +1,88 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+
+# Vite
+.vite/
+dist/
+*.local
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.*.local
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Tailwind CSS generated files (if any specific)
+tailwind.css
+
+# Optional: Ignore coverage reports
+coverage/
+
+# Optional: Ignore testing cache
+jest.config.js
+coverage/
+.nyc_output/
+
+# OS specific files
+*.swp
+*.swo
+
+# Mac system files
+.DS_Store
+
+# Bootstrap (no specific files unless custom builds are generated)
+
+# ESLint and Prettier cache
+.eslintcache
+.prettierignore
+
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
