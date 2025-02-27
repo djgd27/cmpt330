@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import HeroCard from "../components/HomePage/Hero";
-import ProductDescription from "../components/HomePage/Product";
+import MissionStatement from "../components/HomePage/Mission";
+import OurProducts from "../components/HomePage/Products";
 import CallToAction from "../components/HomePage/Call";
 
 const HomePage: React.FC = () => {
@@ -11,7 +12,8 @@ const HomePage: React.FC = () => {
   return (
     <div className="overflow-x-hidden">
       <HeroCard />
-      <ProductDescription />
+      <MissionStatement/>
+      <OurProducts />
       <CallToAction />
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navbar, Container } from "react-bootstrap";
-import logo from "../../../public/apple_colorful.svg";
+import logo from "../../../src/assets/apple_colorful.svg";
 import { FiSearch, FiShoppingBag } from "react-icons/fi";
 
 const NavBar: React.FC = () => {

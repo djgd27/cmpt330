@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "../../pages/Home";
 import MacPage from "../../pages/Mac";
+import TestPage from "../../pages/Test";
 import NotFound from "../../pages/404";
 
 const AppRouter: React.FC = () => {
@@ -10,6 +11,7 @@ const AppRouter: React.FC = () => {
       <Routes>
         <Route path="/" Component={HomePage} />
         <Route path="/Mac" Component={MacPage} />
+        <Route path="/Test" Component={TestPage} />
         <Route path="*" Component={NotFound} />
       </Routes>
     </Router>
