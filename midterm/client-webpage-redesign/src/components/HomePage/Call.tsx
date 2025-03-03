@@ -4,14 +4,6 @@ import { Button } from "react-bootstrap";
 const CallToAction: React.FC = () => {
   return (
     <>
-      <div className="flex justify-center gap-4 mt-6">
-        <Button variant="primary" size="lg">
-          Buy Now
-        </Button>
-        <Button variant="secondary" size="lg">
-          Learn More
-        </Button>
-      </div>
       <div className="overflow-x-hidden">
         {/* 8. Red text on green background */}
         <div className="py-20 px-6 bg-green-700">
@@ -28,7 +20,7 @@ const CallToAction: React.FC = () => {
               variant="outline-light"
               size="lg"
               href="/environment"
-              className="px-6 py-3 rounded-full font-semibold text-white border-white"
+              className="px-6 py-3 rounded-full font-semibold text-white border-white hover:bg-sky-400"
             >
               Learn about our environmental initiatives
             </Button>

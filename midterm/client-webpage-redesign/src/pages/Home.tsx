@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import HeroCard from "../components/HomePage/Hero";
+import Special from "../components/HomePage/Promo";
 import MissionStatement from "../components/HomePage/Mission";
 import OurProducts from "../components/HomePage/Products";
 import CallToAction from "../components/HomePage/Call";
@@ -12,9 +13,11 @@ const HomePage: React.FC = () => {
   return (
     <div className="overflow-x-hidden">
       <HeroCard />
-      <MissionStatement/>
-      <OurProducts />
       <CallToAction />
+
+      <OurProducts />
+      <Special />
+      <MissionStatement />
     </div>
   );
 };
