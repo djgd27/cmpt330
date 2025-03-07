@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import FleeingIcon from "../components/MacPage/FleeingIcon";
 
 const MacPage: React.FC = () => {
   useEffect(() => {
@@ -8,6 +9,7 @@ const MacPage: React.FC = () => {
   return (
     <>
       <p>this is our site gang</p>
+      <FleeingIcon/>
     </>
   );
 };
