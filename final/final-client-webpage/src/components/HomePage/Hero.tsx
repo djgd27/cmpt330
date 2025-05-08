@@ -1,8 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useScrollFadeIn } from "../../hooks/useScrollFadeIn"; // adjust path if needed
 import iphone from "../../assets/latest_iphone.jpg";
 
 const HeroCard: React.FC = () => {
+  const headingFade = useScrollFadeIn({ delay: 0.1 });
+  const textFade = useScrollFadeIn({ delay: 0.3 });
+  const buttonFade = useScrollFadeIn({ delay: 0.5 });
   return (
     <>
       <section
@@ -17,22 +21,18 @@ const HeroCard: React.FC = () => {
           alt="Latest iPhone"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/25 z-0" />
+        <div className="absolute inset-0 bg-black/15 z-0" />
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <motion.h1
             id="hero-heading"
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            {...headingFade}
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8 text-center"
           >
             The new iPhone 16 Pro
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            {...textFade}
             className="text-base sm:text-lg md:text-xl text-white mb-12 text-center max-w-2xl px-4 sm:px-6"
           >
             The most advanced iPhone yet. With incredible battery life, powerful
@@ -41,9 +41,7 @@ const HeroCard: React.FC = () => {
 
           {/* 7. Better text descriptions for buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            {...buttonFade}
             className="flex flex-col md:flex-row gap-4 px-4 sm:px-0"
           >
             <p id="iphone-desc" className="sr-only">
