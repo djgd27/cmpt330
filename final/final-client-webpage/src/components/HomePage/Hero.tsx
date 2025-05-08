@@ -1,48 +1,75 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { motion } from "framer-motion";
 import iphone from "../../assets/latest_iphone.jpg";
 
 const HeroCard: React.FC = () => {
   return (
-    <div className="overflow-x-hidden">
-      {/* 1. Full-screen hero image */}
-      <div className="relative h-screen w-full">
+    <>
+      <section
+        role="banner"
+        aria-labelledby="hero-heading"
+        className="relative h-screen w-full overflow-x-hidden min-h-screen"
+      >
+        {/* 1. Full-screen hero image */}
+
         <img
           src={iphone}
           alt="Latest iPhone"
           className="w-full h-full object-cover"
         />
+        <div className="absolute inset-0 bg-black/25 z-0" />
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <h1 className="text-5xl font-bold text-white mb-8 text-center">
+          <motion.h1
+            id="hero-heading"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8 text-center"
+          >
             The new iPhone 16 Pro
-          </h1>
-          <p className="text-xl text-white mb-12 text-center max-w-2xl px-6">
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-base sm:text-lg md:text-xl text-white mb-12 text-center max-w-2xl px-4 sm:px-6"
+          >
             The most advanced iPhone yet. With incredible battery life, powerful
             camera system, and the fastest chip ever in a smartphone.
-          </p>
+          </motion.p>
 
           {/* 7. Better text descriptions for buttons */}
-          <div className="flex flex-col md:flex-row gap-6">
-            <Button
-              variant="light"
-              size="lg"
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex flex-col md:flex-row gap-4 px-4 sm:px-0"
+          >
+            <p id="iphone-desc" className="sr-only">
+              Navigate to the iPhone 16 Pro product page.
+            </p>
+            <a
               href="/iphone-16-pro"
-              className="px-8 py-3 rounded-full font-semibold text-white"
+              aria-describedby="iphone-desc"
+              className="px-8 py-3 rounded-full font-semibold bg-white text-black text-center transition duration-300 hover:bg-gray-100 focus:ring-black focus:ring-offset-4 focus:ring-offset-white"
             >
               Experience the innovation of iPhone 16 Pro today
-            </Button>
-            <Button
-              variant="outline-light"
-              size="lg"
+            </a>
+            <p id="compare-iphone-models" className="sr-only">
+              Navigate to the compare iPhones product page.
+            </p>
+            <a
               href="/compare-iphone"
-              className="px-8 py-3 rounded-full font-semibold text-white"
+              aria-describedby="compare-iphone-models"
+              className="px-8 py-3 rounded-full font-semibold border border-white text-white text-center transition duration-300 hover:bg-white hover:text-black focus:ring-white focus:ring-offset-4 focus:ring-offset-black"
             >
               Compare with previous generation iPhone models
-            </Button>
-          </div>
+            </a>
+          </motion.div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 
