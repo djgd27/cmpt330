@@ -24,7 +24,7 @@ export function useScrollFadeIn({
       hidden: { opacity: 0, y: yOffset },
       visible: { opacity: 1, y: 0 },
     },
-    transition: { delay, duration },
+    transition: { delay, duration, ease: [0.4, 0, 0.2, 1] },
   };
 
   return motionProps;
