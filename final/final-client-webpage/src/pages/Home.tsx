@@ -14,7 +14,6 @@ const HomePage: React.FC = () => {
     <div className="overflow-x-hidden">
       <HeroCard />
       <CallToAction />
-
       <OurProducts />
       <Special />
       <MissionStatement />

@@ -9,7 +9,7 @@ const CallToAction: React.FC = () => {
       <section
         role="region"
         aria-labelledby="sustainability-heading"
-        className="py-20 px-6 bg-gradient-to-b from-neutral-900 to-black overflow-x-hidden"
+        className="py-20 px-6 bg-gradient-to-t from-neutral-600 to-black overflow-x-hidden"
       >
         <motion.div {...fadeInProps} className="max-w-4xl mx-auto text-center">
           <h2
