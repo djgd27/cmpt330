@@ -4,5 +4,6 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/cmpt330/final/final-client-webpage/',
   plugins: [react(), tailwindcss()],
 });
