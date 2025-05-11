@@ -1,54 +1,39 @@
-# React + TypeScript + Vite
+# Apple Product Showcase (Accessibility-Focused)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A mock Apple.com homepage rebuilt with a focus on accessibility, consistent UI/UX, and modern frontend technologies. This project follows WCAG guidelines and was built as part of a university course on accessible frontend development.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Fully responsive layout (mobile, tablet, desktop)
+- Accessible navigation with keyboard support
+- Skip-to-content link (WCAG 2.1)
+- Screen reader-friendly component structure
+- Modular component-based design (React + TypeScript)
+- Tailwind CSS v4.1 with custom configuration
+- Semantic HTML and ARIA landmarks
+- Custom 404 page with motion and accessibility
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 18
+- TypeScript
+- Tailwind CSS 4.1
+- Vite
+- React Router DOM 6.14
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Accessibility Features
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- `lang="en"` defined in HTML
+- `role="main"` and ARIA labeling for screen readers
+- `focus-visible` outlines on all interactive elements
+- Semantic HTML (`<main>`, `<section>`, `<header>`, `<nav>`, etc.)
+- All buttons and links are keyboard-navigable
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Getting Started
+- npm install
+- npm run dev
+- Then navigate to `http://localhost:5173`
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Academic Notes
+
+This project was submitted as part of CMPT330 — Accessible Web Design.  
