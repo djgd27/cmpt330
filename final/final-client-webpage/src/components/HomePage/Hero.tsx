@@ -12,7 +12,7 @@ const HeroCard: React.FC = () => {
       <section
         role="banner"
         aria-labelledby="hero-heading"
-        className="relative h-screen w-full overflow-x-hidden min-h-screen"
+        className="relative h-screen w-full overflow-x-hidden min-h-screen pt-14"
       >
         {/* 1. Full-screen hero image */}
 
@@ -22,7 +22,7 @@ const HeroCard: React.FC = () => {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/15 z-0" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
           <motion.h1
             id="hero-heading"
             {...headingFade}

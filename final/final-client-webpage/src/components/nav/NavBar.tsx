@@ -1,236 +1,118 @@
-import React, { useState } from "react";
-import { Navbar, Container } from "react-bootstrap";
-import logo from "../../../src/assets/apple_colorful.svg";
-import { FiSearch, FiShoppingBag } from "react-icons/fi";
+import { useState, useRef, useEffect } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
+import { NavLinks } from "./modules/NavItems";
+import MobileMenu from "./modules/MobileMenu";
+import Logo from "./modules/Logo";
 
 const NavBar: React.FC = () => {
-  const [expanded, setExpanded] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Handle outside click and escape
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
 
   return (
-    <Navbar
-      expand="lg"
-      className="w-full bg-black bg-opacity-95 backdrop-blur-md py-2"
-      expanded={expanded}
-      onToggle={setExpanded}
+    <header
+      role="banner"
+      className="bg-black bg-opacity-95 backdrop-blur-md text-white fixed w-full z-50"
     >
-      <Container fluid className="px-4 md:px-8 lg:px-12 xl:px-24">
-        <div className="flex items-center justify-center w-full h-11">
-          {/* Apple Logo */}
-          <Navbar.Brand
-            href="/"
-            className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 z-10"
-          >
-            <img src={logo} className="w-auto h-7" alt="Logo" />
-          </Navbar.Brand>
-
-          {/* Navbar Toggle (Mobile View) */}
-          <Navbar.Toggle
-            aria-controls="basic-navbar-nav"
-            className="border-0 p-0 ml-auto lg:hidden"
-          >
-            <span className="text-white text-xs">Menu</span>
-          </Navbar.Toggle>
-
-          {/* Navigation Links */}
-          <div className="hidden lg:flex w-full justify-center">
-            <ul className="flex items-center justify-center space-x-8">
-              <li>
-                <a
-                  href="/"
-                  className="text-xs text-gray-300 font-normal hover:text-white py-2"
-                >
-                  Store
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/mac"
-                  className="text-xs text-gray-300 font-normal hover:text-white py-2"
-                >
-                  Mac
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/ipad"
-                  className="text-xs text-gray-300 font-normal hover:text-white py-2"
-                >
-                  iPad
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/iphone"
-                  className="text-xs text-gray-300 font-normal hover:text-white py-2"
-                >
-                  iPhone
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/watch"
-                  className="text-xs text-gray-300 font-normal hover:text-white py-2"
-                >
-                  Watch
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/vision"
-                  className="text-xs text-gray-300 font-normal hover:text-white py-2"
-                >
-                  Vision
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/airpods"
-                  className="text-xs text-gray-300 font-normal hover:text-white py-2"
-                >
-                  AirPods
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/tv-home"
-                  className="text-xs text-gray-300 font-normal hover:text-white py-2"
-                >
-                  TV & Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/entertainment"
-                  className="text-xs text-gray-300 font-normal hover:text-white py-2"
-                >
-                  Entertainment
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/accessories"
-                  className="text-xs text-gray-300 font-normal hover:text-white py-2"
-                >
-                  Accessories
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/support"
-                  className="text-xs text-gray-300 font-normal hover:text-white py-2"
-                >
-                  Support
-                </a>
-              </li>
-            </ul>
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 xl:px-24">
+        <div className="flex items-center justify-between h-14 relative">
+          {/* Centered logo (Apple style) */}
+          <div className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0">
+            <Logo />
           </div>
 
-          {/* Right aligned search and bag icons */}
-          <div className="hidden lg:flex items-center space-x-6 absolute right-4 md:right-8 lg:right-12 xl:right-24">
+          {/* Desktop nav links */}
+          <nav
+            className="hidden lg:flex flex-1 justify-center space-x-6 text-xs text-gray-300"
+            aria-label="Primary navigation"
+          >
+            <NavLinks className="hover:text-white" />
+          </nav>
+
+          {/* Icons on the right (only on desktop) */}
+          <div className="hidden lg:flex items-center space-x-6">
             <a
               href="/search"
               aria-label="Search"
-              className="text-gray-300 hover:text-white"
+              className="hover:text-neutral-400"
             >
-              <FiSearch className="w-4 h-4" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z"
+                />
+              </svg>
             </a>
             <a
               href="/bag"
-              aria-label="Bag"
-              className="text-gray-300 hover:text-white"
+              aria-label="Shopping Bag"
+              className="hover:text-neutral-400"
             >
-              <FiShoppingBag className="w-4 h-4" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 8V6a6 6 0 1112 0v2m-9 0h6m-9 0a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V10a2 2 0 00-2-2m-9 0V6a3 3 0 016 0v2"
+                />
+              </svg>
             </a>
           </div>
+
+          {/* Mobile toggle */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            className="lg:hidden ml-auto text-sm focus:outline-none focus:ring-2 focus:ring-white"
+          >
+            {menuOpen ? (
+              <FiX className="w-5 h-5" />
+            ) : (
+              <FiMenu className="w-5 h-5" />
+            )}
+          </button>
         </div>
 
-        {/* Mobile Navigation Dropdown */}
-        <Navbar.Collapse id="basic-navbar-nav" className="lg:hidden bg-black">
-          <div className="pt-2 pb-8 px-8">
-            <ul className="flex flex-col space-y-3">
-              <li className="py-3 border-b border-gray-800">
-                <a href="/store" className="text-sm text-gray-300 font-normal">
-                  Store
-                </a>
-              </li>
-              <li className="py-3 border-b border-gray-800">
-                <a href="/mac" className="text-sm text-gray-300 font-normal">
-                  Mac
-                </a>
-              </li>
-              <li className="py-3 border-b border-gray-800">
-                <a href="/ipad" className="text-sm text-gray-300 font-normal">
-                  iPad
-                </a>
-              </li>
-              <li className="py-3 border-b border-gray-800">
-                <a href="/iphone" className="text-sm text-gray-300 font-normal">
-                  iPhone
-                </a>
-              </li>
-              <li className="py-3 border-b border-gray-800">
-                <a href="/watch" className="text-sm text-gray-300 font-normal">
-                  Watch
-                </a>
-              </li>
-              <li className="py-3 border-b border-gray-800">
-                <a href="/vision" className="text-sm text-gray-300 font-normal">
-                  Vision
-                </a>
-              </li>
-              <li className="py-3 border-b border-gray-800">
-                <a
-                  href="/airpods"
-                  className="text-sm text-gray-300 font-normal"
-                >
-                  AirPods
-                </a>
-              </li>
-              <li className="py-3 border-b border-gray-800">
-                <a
-                  href="/tv-home"
-                  className="text-sm text-gray-300 font-normal"
-                >
-                  TV & Home
-                </a>
-              </li>
-              <li className="py-3 border-b border-gray-800">
-                <a
-                  href="/entertainment"
-                  className="text-sm text-gray-300 font-normal"
-                >
-                  Entertainment
-                </a>
-              </li>
-              <li className="py-3 border-b border-gray-800">
-                <a
-                  href="/accessories"
-                  className="text-sm text-gray-300 font-normal"
-                >
-                  Accessories
-                </a>
-              </li>
-              <li className="py-3">
-                <a
-                  href="/support"
-                  className="text-sm text-gray-300 font-normal"
-                >
-                  Support
-                </a>
-              </li>
-              <li className="pt-4 flex items-center space-x-6">
-                <a href="/search" aria-label="Search" className="text-gray-300">
-                  <FiSearch className="w-5 h-5" />
-                </a>
-                <a href="/bag" aria-label="Bag" className="text-gray-300">
-                  <FiShoppingBag className="w-5 h-5" />
-                </a>
-              </li>
-            </ul>
-          </div>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+        {/* Mobile dropdown menu */}
+        <MobileMenu isOpen={menuOpen} menuRef={menuRef} />
+      </div>
+    </header>
   );
 };
 
