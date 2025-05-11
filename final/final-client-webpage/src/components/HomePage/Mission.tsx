@@ -1,26 +1,43 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { useScrollFadeIn } from "../../hooks/useScrollFadeIn";
 
 const MissionStatement: React.FC = () => {
+  const fadeInProps = useScrollFadeIn({ delay: 0.1 });
   return (
-    <div className="overflow-x-hidden">
-      {/* 2. Text with lots of breathing room */}
-      <div className="py-32 px-8 md:px-16 bg-gray-50">
-        <h2 className="text-4xl font-semibold text-center mb-20">
-          Innovation. Redefined.
-        </h2>
-        <p className="text-xl max-w-4xl mx-auto mb-20 leading-relaxed">
-          At Apple, we believe in creating products that enrich people's lives.
-          Our journey is defined by a relentless pursuit of simplicity, beauty,
-          and functionality. Every device we create is designed to make your
-          everyday experiences extraordinary.
-        </p>
-        <p className="text-xl max-w-4xl mx-auto leading-relaxed">
-          We combine cutting-edge technology with intuitive design to create
-          products that are powerful yet simple to use. It's not just about what
-          our technology can do, but what you can do with it.
-        </p>
-      </div>
-    </div>
+    <>
+      <section
+        role="region"
+        aria-labelledby="mission-heading"
+        aria-describedby="mission-desc"
+        className="overflow-x-hidden py-32 px-6 bg-neutral-100"
+      >
+        <motion.div {...fadeInProps} className="max-w-4xl mx-auto text-center">
+          <h2
+            id="mission-heading"
+            className="text-4xl font-semibold tracking-tight mb-6 text-black"
+          >
+            Our Mission
+          </h2>
+          <div className="h-0.5 w-12 bg-black mb-6 mx-auto" />
+          <p id="mission-desc" className="sr-only">
+            Apple’s mission statement section. Describes the company’s values
+            including accessibility, privacy, sustainability, and user-centered
+            design.
+          </p>
+          <p className="text-lg text-gray-800 leading-relaxed mb-4">
+            Apple designs technology that empowers people and enriches lives. We
+            believe in accessibility, privacy, and sustainability — not as
+            features, but as core values.
+          </p>
+          <p className="text-lg text-gray-800 leading-relaxed">
+            Everything we make reflects our belief in challenging the status
+            quo, thinking differently, and delivering seamless experiences
+            across devices, platforms, and people.
+          </p>
+        </motion.div>
+      </section>
+    </>
   );
 };
 
