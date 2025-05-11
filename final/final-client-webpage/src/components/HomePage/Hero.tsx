@@ -10,6 +10,7 @@ const HeroCard: React.FC = () => {
   return (
     <>
       <section
+        id="main-content"
         role="banner"
         aria-labelledby="hero-heading"
         className="relative h-screen w-full overflow-x-hidden min-h-screen pt-14"
