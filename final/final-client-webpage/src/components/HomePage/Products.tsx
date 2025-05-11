@@ -1,72 +1,98 @@
 import React from "react";
 import broll from "../../assets/mac_bRoll.mp4";
 import iPad from "../../assets/iPad.jpg";
-import iWatch from "../../assets/iWatch.jpg";
+import Watch from "../../assets/iWatch.jpg";
 import airpods from "../../assets/airpods.jpg";
+import { motion } from "framer-motion";
+import { useScrollFadeIn } from "../../hooks/useScrollFadeIn";
+import ProductCard from "./ProductCard";
 
 const OurProducts: React.FC = () => {
+  const fadeInProps = useScrollFadeIn({ delay: 0.2, duration: 0.6 });
+  const headingFade = useScrollFadeIn({ delay: 0.1, duration: 0.6 });
   return (
     <>
-      <div className="overflow-x-hidden">
-        {/* 3. Images of varying sizes + 5. Spread hierarchy around */}
-        <div className="py-24 px-6 bg-white">
-          <h2 className="text-4xl font-semibold mb-16 text-center">
-            Our Products
-          </h2>
+      <section
+        role="region"
+        aria-labelledby="products-heading"
+        className="py-24 px-6 bg-white overflow-x-hidden"
+      >
+        <motion.h2
+          {...headingFade}
+          id="products-heading"
+          className="text-4xl font-semibold mb-16 text-center"
+        >
+          Our Products
+        </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 max-w-7xl mx-auto">
-            <div className="md:col-span-8 md:row-span-2 bg-gray-100 rounded-3xl overflow-hidden">
-              <video autoPlay loop muted>
+        <motion.div
+          {...fadeInProps}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
+        >
+          <ProductCard
+            title="Mac"
+            description="Incredibly powerful. For creativity and productivity."
+            href="/mac"
+            srId="mac-desc"
+            srText="Learn more about Mac computers for creativity and productivity."
+            media={
+              <video
+                autoPlay
+                loop
+                muted
+                className="object-cover w-full h-full rounded-t-3xl"
+              >
                 <source src={broll} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
+            }
+          />
+          <ProductCard
+            title="iPad"
+            description="Versatile. For everything you do."
+            href="/ipad"
+            srId="ipad-desc"
+            srText="Learn more about the iPad's versatility and capabilities."
+            media={
+              <img
+                src={iPad}
+                alt="iPad"
+                className="object-cover w-full h-full rounded-t-3xl"
+              />
+            }
+          />
 
-              <div className="p-8">
-                <h3 className="text-3xl font-semibold mb-4">Mac</h3>
-                <p className="mb-4">
-                  Incredibly powerful. For creativity and productivity.
-                </p>
-                <a href="/mac" className="text-blue-600 font-medium">
-                  Learn more &gt;
-                </a>
-              </div>
-            </div>
+          <ProductCard
+            title="Watch"
+            description="The ultimate device for a healthy life."
+            href="/watch"
+            srId="watch-desc"
+            srText="Learn more about Apple Watch features that support health and fitness."
+            media={
+              <img
+                src={Watch}
+                alt="Apple Watch"
+                className="object-cover w-full h-full rounded-t-3xl"
+              />
+            }
+          />
 
-            <div className="md:col-span-4 bg-gray-100 rounded-3xl overflow-hidden">
-              <img src={iPad} alt="iPad" className="object-cover" />
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold mb-3">iPad</h3>
-                <p className="mb-3">Versatile. For everything you do.</p>
-                <a href="/ipad" className="text-blue-600 font-medium">
-                  Learn more &gt;
-                </a>
-              </div>
-            </div>
-
-            <div className="md:col-span-7 md:col-start-6 bg-gray-100 rounded-3xl overflow-hidden">
-              <img src={iWatch} alt="Apple Watch" className="object-cover" />
-              <div className="p-7">
-                <h3 className="text-2xl font-semibold mb-3">Apple Watch</h3>
-                <p className="mb-3">The ultimate device for a healthy life.</p>
-                <a href="/watch" className="text-blue-600 font-medium">
-                  Learn more &gt;
-                </a>
-              </div>
-            </div>
-
-            <div className="md:col-span-5 md:row-span-2 bg-gray-100 rounded-3xl overflow-hidden">
-              <img src={airpods} alt="AirPods" className="object-cover" />
-              <div className="p-7">
-                <h3 className="text-2xl font-semibold mb-3">AirPods</h3>
-                <p className="mb-3">Immersive sound experience.</p>
-                <a href="/airpods" className="text-blue-600 font-medium">
-                  Learn more &gt;
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+          <ProductCard
+            title="AirPods"
+            description="Immersive sound experience."
+            href="/AirPods"
+            srId="airpods-desc"
+            srText="Learn more about the immersive audio features of AirPods."
+            media={
+              <img
+                src={airpods}
+                alt="AirPods"
+                className="object-cover w-full h-full rounded-t-3xl"
+              />
+            }
+          />
+        </motion.div>
+      </section>
     </>
   );
 };
